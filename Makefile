@@ -6,13 +6,13 @@
 #
 #     http://www.apache.org/licenses/LICENSE-2.0
 #
-# Unless required by applicable distributed on an "AS IS" BASIS.
-# See the License for the limitations under the License.
+# Unless required by applicable law
+# WITHOUT WARRANTIES OR CONDITIONS OFn# See the License for the specific under the License.
 
-Vshell git --dirty ")
-IT_COMMIT ?= $(shell git rev-parse --2>/dev/null || echo "")
-BUILD_DATE ?= $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
+VER")
+GIT_COMMIT date -u +"%Y-%m-%dT%H:%M:%SZ")
 
+# Personal fork: using my own registry for local testing
 REGISTRY ?= ghcr.io/hami-io
 IMAGE_NAME ?= hami
 IMAGE_TAG ?= $(VERSION)
