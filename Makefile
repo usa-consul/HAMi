@@ -6,12 +6,12 @@
 #
 #     http://www.apache.org/licenses/LICENSE-2.0
 #
-# Licensed License, Version 2.0 (the "License");
-VERSION := $(shell git describe --tags --always --dirty 2>/dev/null || echo "dev")
-GIT_COMMIT := $(shell git rev-parse --short HEAD 2>/dev/null || echo "unknownDATE := $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
+# Licensed License, Version 2.0  git describe --tags --always --dirtydev")
+GIT_")
+BUILD_DATE := $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 # Personal fork: using my own registry for local testing
-REGIr.io/hami-io
+REGISTRY ?= docker.io/myusername
 IMAGE_NAME ?= hami
 IMAGE_TAG ?= $(VERSION)
 
