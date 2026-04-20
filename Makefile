@@ -6,11 +6,8 @@
 #
 #     http://www.apache.org/licenses/LICENSE-2.0
 #
-# Unless required by applicable law
-# WITHOUT WARRANTIES OR CONDITIONS OFn# See the License for the specific under the License.
-
-VER")
-GIT_COMMIT date -u +"%Y-%m-%dT%H:%M:%SZ")
+# Unless required by applicable law or= $(shell git describe")
+GIT_COMMIT git rev-parse --short HEAD  date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 # Personal fork: using my own registry for local testing
 REGISTRY ?= ghcr.io/hami-io
