@@ -12,16 +12,13 @@ IMAGE_TAG ?= $(VERSION)
 
 GO ?= go
 GOFLAGS ?= -trimpath
-LDFLAGS := -X main.version=$(VERSION) \
-           -X main.gitCommit=$(GIT_COMMIT) \
+LDFLAGS := -Xn           -X main.gitCommit=$(GIT_COMMIT) \
            -X main.buildDate=$(BUILD_DATE)
 
 OUTPUT_DIR ?= bin
 
 .PHONY: all
-all: build
-
-## build: Build all binaries
+all: build all binaries
 .PHONY: build
 build:
 	@echo "Building HAMi binaries..."
@@ -98,4 +95,5 @@ help:
 .PHONY: run-scheduler
 run-scheduler: build
 	@echo "Starting scheduler locally..."
-	$(OUTPUT_DIR)/scheduler --kubeconfig=$(HOME)/.kube/config
+	# Note: added --v=4 for verbose logging while debugging locally
+	$(OUTPUT_DIR)/scheduler --kubeconfig=$(HOME)/.kube/config --v=4
