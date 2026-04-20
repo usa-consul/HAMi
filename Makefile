@@ -6,11 +6,12 @@
 #
 #     http://www.apache.org/licenses/LICENSE-2.0
 #
-# Unless required by applicable law or= $(shell git describe")
-GIT_COMMIT git rev-parse --short HEAD  date -u +"%Y-%m-%dT%H:%M:%SZ")
+# Licensed License, Version 2.0 (the "License");
+VERSION := $(shell git describe --tags --always --dirty 2>/dev/null || echo "dev")
+GIT_COMMIT := $(shell git rev-parse --short HEAD 2>/dev/null || echo "unknownDATE := $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 # Personal fork: using my own registry for local testing
-REGISTRY ?= ghcr.io/hami-io
+REGIr.io/hami-io
 IMAGE_NAME ?= hami
 IMAGE_TAG ?= $(VERSION)
 
