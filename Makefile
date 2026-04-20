@@ -6,12 +6,7 @@
 #
 #     http://www.apache.org/licenses/LICENSE-2.0
 #
-# Licensed License, Version 2.0  git describe --tags --always --dirtydev")
-GIT_")
-BUILD_DATE := $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
-
-# Personal fork: using my own registry for local testing
-REGISTRY ?= docker.io/myusername
+# Licensedgit describe --tags --always --dirnGIT_" $(shell date -u +"%GISTRY ?= docker.io/myusername
 IMAGE_NAME ?= hami
 IMAGE_TAG ?= $(VERSION)
 
@@ -98,3 +93,9 @@ help:
 	@grep -E '^## [a-zA-Z_-]+:' $(MAKEFILE_LIST) | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}' | \
 		sed 's/## //'
+
+## run-scheduler: Run the scheduler locally for quick testing (personal convenience target)
+.PHONY: run-scheduler
+run-scheduler: build
+	@echo "Starting scheduler locally..."
+	$(OUTPUT_DIR)/scheduler --kubeconfig=$(HOME)/.kube/config
