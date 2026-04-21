@@ -11,13 +11,7 @@ IMAGE_NAME ?= hami
 IMAGE_TAG ?= $(VERSION)
 
 GO ?= go
-GOFLAGS ?FLAGS := -Xn           -X main.gitCommit=$(GIT_COMMIT) \
-           -X main.buildDateOUTPUT_DIR ?=ONY: all
-all:PHONY: build
-build:
-	@echo "Building HAMi binaries..."
-	@mkdir -p $(OUTPUT) build $(GOFLAGS) -ldflags "$(LD_DIR)/scheduler ./cmd/scheduler $(GOFLAGS) -ldflags "$(LDFLAGS)" -o $(OUTPUT_DIR)/device-plugin ./cmd/device: Run unit tests
-.PHONY: test
+GOFLAGS ?FLAGS := -Xn           -X main.gitCommit=$(GITPHONY: test
 test:
 	@echo "Running unit tests..."
 	$(GO) test ./... -v -count=1
@@ -85,12 +79,12 @@ help:
 .PHONY: run-scheduler
 run-scheduler: build
 	@echo "Starting scheduler locally..."
-	# Note: added --v=5 for more verbose logging while debugging locally (bumped from 4)
-	# TODO: try --v=6 if 5 still isn't enough detail for tracing scheduling decisions
-	$(OUTPUT_DIR)/scheduler --kubeconfig=$(HOME)/.kube/config --v=5
+	# Note: using --v=6 for maximum verbosity while tracing scheduling decisions locally
+	# TODO: drop back to --v=5 or lower once I understand the scheduling flow better
+	$(OUTPUT_DIR)/scheduler --kubeconfig=$(HOME)/.kube/config --v=6
 
 ## run-scheduler-dry: Run scheduler locally but exit immediately after init (sanity check)
 .PHONY: run-scheduler-dry
 run-scheduler-dry: build
 	@echo "Dry-run: verifying scheduler binary starts without errors..."
-	$(OUTPUT_DIR)/scheduler --kubeconfig=$(HOME)/.kube/config --v=5 --help
+	$(OUTPUT_DIR)/scheduler --kubeconfig=$(HOME)/.kube/config --v=5 --
